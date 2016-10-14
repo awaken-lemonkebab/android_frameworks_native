@@ -32,6 +32,7 @@
 
 #include <android-base/stringprintf.h>
 
+#include <bfqio/bfqio.h>
 #include <cutils/compiler.h>
 #include <cutils/sched_policy.h>
 
@@ -190,6 +191,9 @@ EventThread::EventThread(std::unique_ptr<VSyncSource> vsyncSource,
     }
 
     set_sched_policy(tid, SP_FOREGROUND);
+
+    android_set_rt_ioprio(tid, 1);
+
     mDolphinHandle = dlopen("libdolphin.so", RTLD_NOW);
     if (!mDolphinHandle) {
         ALOGW("Unable to open libdolphin.so: %s.", dlerror());
