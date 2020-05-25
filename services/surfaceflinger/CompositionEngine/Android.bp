@@ -52,7 +52,7 @@ cc_library {
     name: "libcompositionengine",
     defaults: [
         "libcompositionengine_defaults",
-        "surfaceflinger_fod_lib_defaults",
+        "surfaceflinger_udfps_lib_defaults",
     ],
     srcs: [
         "src/planner/CachedSet.cpp",
@@ -74,6 +74,7 @@ cc_library {
         "src/OutputLayer.cpp",
         "src/OutputLayerCompositionState.cpp",
         "src/RenderSurface.cpp",
+        "src/UdfpsExtension.cpp",
     ],
     local_include_dirs: ["include"],
     export_include_dirs: ["include"],
@@ -103,9 +104,9 @@ cc_library {
 }
 
 cc_library_static {
-    name: "surfaceflinger_fod_lib",
+    name: "surfaceflinger_udfps_lib",
     srcs: [
-        "src/FodExtension.cpp",
+        "src/UdfpsExtension.cpp",
     ],
     export_include_dirs: ["include"],
 }
