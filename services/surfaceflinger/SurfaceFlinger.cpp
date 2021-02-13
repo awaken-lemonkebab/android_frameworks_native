@@ -5074,7 +5074,7 @@ void SurfaceFlinger::setPowerModeInternal(const sp<DisplayDevice>& display, hal:
         if (isDummyDisplay) {
             if (display->isPrimary() && currentMode == hal::PowerMode::DOZE_SUSPEND) {
                 mScheduler->onScreenAcquired(mAppConnectionHandle);
-                mScheduler->resyncToHardwareVsync(true, getVsyncPeriodFromHWC());
+                mScheduler->resyncToHardwareVsync(true, vsyncPeriod);
             }
         } else {
             updateVsyncSource();
